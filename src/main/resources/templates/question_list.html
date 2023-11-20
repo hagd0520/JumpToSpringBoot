@@ -7,8 +7,8 @@
     </thead>
     <tbody>
     <tr th:each="question : ${questionList}">
-        <td> [[${question.subject}]]</td>
-        <td> [[${question.createDate}]]</td>
+        <td [[${question.subject}]]></td>
+        <td [[${question.createDate}]]></td>
     </tr>
     </tbody>
 </table>
