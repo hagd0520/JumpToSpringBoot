@@ -1,9 +1,7 @@
 package com.ll.sbb.question;
 
 import com.ll.sbb.DataNotFoundException;
-import com.ll.sbb.user.SiteUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -36,14 +34,6 @@ public class QuestionService {
         }
     }
 
-    public void create(String subject, String content) {
-        Question q = new Question();
-        q.setSubject(subject);
-        q.setContent(content);
-        q.setCreateDate(LocalDateTime.now());
-        this.questionRepository.save(q);
-    }
-
     public void create(QuestionForm questionForm) {
         Question q = new Question();
         q.setSubject(questionForm.getSubject());
@@ -51,5 +41,16 @@ public class QuestionService {
         q.setCreateDate(LocalDateTime.now());
         q.setAuthor(questionForm.getSiteUser());
         this.questionRepository.save(q);
+    }
+
+    public void modify(Question question, String subject, String content) {
+        question.setSubject(subject);
+        question.setContent(content);
+        question.setModifyDate(LocalDateTime.now());
+        this.questionRepository.save(question);
+    }
+
+    public void delete(Question question) {
+        this.questionRepository.delete(question);
     }
 }
