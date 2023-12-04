@@ -1,6 +1,7 @@
 package com.ll.sbb.question;
 
 import com.ll.sbb.DataNotFoundException;
+import com.ll.sbb.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
@@ -48,6 +49,7 @@ public class QuestionService {
         q.setSubject(questionForm.getSubject());
         q.setContent(questionForm.getContent());
         q.setCreateDate(LocalDateTime.now());
+        q.setAuthor(questionForm.getSiteUser());
         this.questionRepository.save(q);
     }
 }
