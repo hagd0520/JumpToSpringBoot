@@ -43,6 +43,9 @@ dependencies {
     implementation 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // 마크다운
+    implementation 'org.commonmark:commonmark:0.21.0'
+
     // devtools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 

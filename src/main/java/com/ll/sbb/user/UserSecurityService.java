@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.ll.sbb.user.UserRole.ADMIN;
+import static com.ll.sbb.user.UserRole.USER;
+
 @RequiredArgsConstructor
 @Service
 public class UserSecurityService implements UserDetailsService {
@@ -27,9 +30,9 @@ public class UserSecurityService implements UserDetailsService {
         SiteUser siteUser = _siteUser.get();
         List<GrantedAuthority> authorities = new ArrayList<>();
         if ("admin".equals(username)) {
-            authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
+            authorities.add(new SimpleGrantedAuthority(ADMIN.getValue()));
         } else {
-            authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));
+            authorities.add(new SimpleGrantedAuthority(USER.getValue()));
         }
         return new User(siteUser.getUsername(), siteUser.getPassword(), authorities);
     }
